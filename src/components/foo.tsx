@@ -5,7 +5,11 @@
 //     </div>
 //   )
 // }
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
+
+interface PropsType {
+    msg: String
+}
 
 export default defineComponent({
   props: {
@@ -14,17 +18,35 @@ export default defineComponent({
       required: true
     }
   },
-  data () {
-    return {
-      count: 0
+  setup () {
+    const count = ref(0)
+    return (props: PropsType) => {
+           <div>
+               <p>{props.msg}</p>
+               <p>{count.value}</p>
+           </div>
     }
-  },
-  render () {
-    return (
-            <div>
-            <div>{this.msg}</div>
-            <p>{this.count}</p>
-            </div>
-    )
   }
 })
+
+// export default defineComponent({
+//   props: {
+//     msg: {
+//       type: String,
+//       required: true
+//     }
+//   },
+//   data () {
+//     return {
+//       count: 0
+//     }
+//   },
+//   render () {
+//     return (
+//             <div>
+//             <div>{this.msg}</div>
+//             <p>{this.count}</p>
+//             </div>
+//     )
+//   }
+// })
