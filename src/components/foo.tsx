@@ -14,9 +14,17 @@ export default defineComponent({
       required: true
     }
   },
+  data () {
+    return {
+      count: 0
+    }
+  },
   render () {
     return (
+            <div>
             <div>{this.msg}</div>
+            <p>{this.count}</p>
+            </div>
     )
   }
 })
